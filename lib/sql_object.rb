@@ -1,12 +1,8 @@
-require 'byebug'
 require_relative 'db_connection'
 require 'active_support/inflector'
-# NB: the attr_accessor we wrote in phase 0 is NOT used in the rest
-# of this project. It was only a warm up.
 
 class SQLObject
   def self.columns
-    # return an array with the names of the table's columns
     return @columns if @columns
 
     all_data = DBConnection.execute2(<<-SQL)
